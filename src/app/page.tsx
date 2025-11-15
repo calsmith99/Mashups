@@ -5,6 +5,7 @@ import { Song } from '@/types';
 import SearchPanel from '@/components/SearchPanel';
 import MashupWorkspace from '@/components/MashupWorkspace';
 import ThemeToggle from '@/components/ThemeToggle';
+import QuotaIndicator from '@/components/QuotaIndicator';
 import { Music, Headphones } from 'lucide-react';
 
 export default function Home() {
@@ -109,6 +110,9 @@ export default function Home() {
           </div>
         </div>
       )}
+      
+      {/* Quota Indicator */}
+      <QuotaIndicator />
     </div>
   );
 }

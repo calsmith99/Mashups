@@ -343,6 +343,12 @@ export const musicService = {
 
   async searchYouTubeVideos(query: string, type: 'instrumental' | 'acapella' = 'instrumental'): Promise<YouTubeVideo[]> {
     try {
+      // Track quota usage on client side
+      if (typeof window !== 'undefined') {
+        const event = new CustomEvent('youtube-quota-used', { detail: { units: 30 } });
+        window.dispatchEvent(event);
+      }
+      
       const response = await axios.get('/api/youtube', {
         params: {
           q: query,
