@@ -10,9 +10,10 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
-      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
-      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
-      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      # Set these in Portainer Stack environment variables
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.mashup.rule=Host(`mashup.${DOMAIN:-localhost}`)"

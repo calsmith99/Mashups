@@ -12,14 +12,15 @@ services:
     environment:
       - NODE_ENV=production
       # Spotify API Configuration
-      - NEXT_PUBLIC_SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
-      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET}
+      - NEXT_PUBLIC_SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID:-}
+      - SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:-}
       # YouTube API Configuration
-      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-}
       # Optional: Set custom hostname
       - HOSTNAME=0.0.0.0
-    env_file:
-      - .env.production
+    # Remove the env_file reference to avoid file not found errors
+    # env_file:
+    #   - .env.production
     networks:
       - mashup-network
     labels:
